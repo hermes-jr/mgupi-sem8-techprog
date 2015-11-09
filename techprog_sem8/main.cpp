@@ -38,7 +38,7 @@ double lasttime = 0;
 int dstMode = DSTMODE_UNI;
 bool flipper = true;
 
-// прототипы
+// РїСЂРѕС‚РѕС‚РёРїС‹
 void record_shake(void);
 void fast_shake(void);
 void writeString(char* string, int x, int y, void* font);
@@ -46,28 +46,28 @@ float Uniform(float mean);
 float Exponential(float mean);
 int   Poisson(float mean);
 
-// Количество элементов массива
+// РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
 int gNumblocks = DEFAULT_NUMBLOCKS;
 
 int progMode = PRMODE_CALC;
 
-// Курсоры just for fun
+// РљСѓСЂСЃРѕСЂС‹ just for fun
 int cursors[9] = {GLUT_CURSOR_INHERIT, GLUT_CURSOR_HELP, GLUT_CURSOR_INFO, GLUT_CURSOR_WAIT, GLUT_CURSOR_TEXT, GLUT_CURSOR_SPRAY, GLUT_CURSOR_LEFT_ARROW, 
 	GLUT_CURSOR_LEFT_SIDE, GLUT_CURSOR_CROSSHAIR};
 
 //char* modes[5] = {"1280x1024:24@60", "800x600:24@60", "640x480:16@60",  "1600x1200:24@60", "1920x1080:32@60"};
 
-// Положения курсора
+// РџРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР°
 int oldX=0, gW=640, gH=480, oldY=0, xPan=0, yPan=0;
 
-// Режим анимации
+// Р РµР¶РёРј Р°РЅРёРјР°С†РёРё
 bool playback = false;
 int playbackCurStepN = 0;
 
-// Заполнен ли массив
+// Р—Р°РїРѕР»РЅРµРЅ Р»Рё РјР°СЃСЃРёРІ
 bool arrayFilled = false;
 
-int mState = UP; // Кнопка мыши нажата/отжата
+int mState = UP; // РљРЅРѕРїРєР° РјС‹С€Рё РЅР°Р¶Р°С‚Р°/РѕС‚Р¶Р°С‚Р°
 
 struct ColorBar
 {
@@ -240,7 +240,7 @@ void HSVtoRGB( float *r, float *g, float *b, float h, float s, float v )
 
 }
 
-// Обработчик нажатий клавиш
+// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёР№ РєР»Р°РІРёС€
 void glutKeyboard(unsigned char key, int x, int y)
 {
 	switch(key)
@@ -324,7 +324,7 @@ void glutKeyboard(unsigned char key, int x, int y)
 	}
 }
 
-// Обработчик нажатий специальных клавиш
+// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёР№ СЃРїРµС†РёР°Р»СЊРЅС‹С… РєР»Р°РІРёС€
 void glutKeyboardSpec(int key, int x, int y)
 {
 	switch(key)
@@ -381,7 +381,7 @@ void glutKeyboardSpec(int key, int x, int y)
 	}
 }
 
-// Обработчик изменения размеров окна
+// РћР±СЂР°Р±РѕС‚С‡РёРє РёР·РјРµРЅРµРЅРёСЏ СЂР°Р·РјРµСЂРѕРІ РѕРєРЅР°
 void glutReshape(int w, int h)
 {
 	glViewport(0, 0, (GLsizei) w, (GLsizei) h);
@@ -466,7 +466,7 @@ void paintAllBars(void)
 
 }
 
-// Функция для просчёта анимации в playback режиме
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїСЂРѕСЃС‡С‘С‚Р° Р°РЅРёРјР°С†РёРё РІ playback СЂРµР¶РёРјРµ
 void playbackCalcStep(void)
 {
 	if(playbackCurStepN > recordSteps)
@@ -515,7 +515,7 @@ void playbackCalcStep(void)
 	flipper = !flipper;
 }
 
-// Callback функция отрисовки содержимого
+// Callback С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
 void glutDisplay(void)
 {
 	//	glClearColor(0.6, 0.6, 0.67, 0);
@@ -524,15 +524,15 @@ void glutDisplay(void)
 	glMatrixMode (GL_MODELVIEW);
 	glLoadIdentity ();
 
-	// По пикселям
+	// РџРѕ РїРёРєСЃРµР»СЏРј
 	glTranslatef (0.375, 0.375, 0);
 
-	// Фиксированное положение камеры - в distance единицах от центра мира
+	// Р¤РёРєСЃРёСЂРѕРІР°РЅРЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ РєР°РјРµСЂС‹ - РІ distance РµРґРёРЅРёС†Р°С… РѕС‚ С†РµРЅС‚СЂР° РјРёСЂР°
 	glTranslatef (0.375 + yPan, xPan + 0.375, 0);
 
 	paintAllBars();
 
-	// Обратно в правый верхний угол
+	// РћР±СЂР°С‚РЅРѕ РІ РїСЂР°РІС‹Р№ РІРµСЂС…РЅРёР№ СѓРіРѕР»
 	glTranslatef (-yPan, -xPan, 0);
 
 	char* dstmds;
@@ -604,13 +604,13 @@ void glutDisplay(void)
 	glColor3f(1, 1, 1);
 	sprintf(numstr, "[Q]uit | [D]istr | [S]ort | [G]enerate | Elements: [L/R/PGUP/PGDN] | [V]isual | reset: HOME");
 	writeString(numstr, 3, gH - 18, GLUT_BITMAP_9_BY_15);
-	// Меняем буфферы (антимерцание, double buffering)
+	// РњРµРЅСЏРµРј Р±СѓС„С„РµСЂС‹ (Р°РЅС‚РёРјРµСЂС†Р°РЅРёРµ, double buffering)
 	glutSwapBuffers();
 }
 
 //////////////////////////
 
-// Самый быстрый шейкер, без анимации и видимых изменений (кроме конечного результата), бенчмарк
+// РЎР°РјС‹Р№ Р±С‹СЃС‚СЂС‹Р№ С€РµР№РєРµСЂ, Р±РµР· Р°РЅРёРјР°С†РёРё Рё РІРёРґРёРјС‹С… РёР·РјРµРЅРµРЅРёР№ (РєСЂРѕРјРµ РєРѕРЅРµС‡РЅРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°), Р±РµРЅС‡РјР°СЂРє
 void fast_shake()
 {
 	compars = 0;
@@ -655,10 +655,10 @@ void fast_shake()
 	glutPostRedisplay();
 }
 
-// То же самое, но в режиме записи действий
+// РўРѕ Р¶Рµ СЃР°РјРѕРµ, РЅРѕ РІ СЂРµР¶РёРјРµ Р·Р°РїРёСЃРё РґРµР№СЃС‚РІРёР№
 void record_shake()
 {
-	// Сбрасываем массив, чтобы был свежий
+	// РЎР±СЂР°СЃС‹РІР°РµРј РјР°СЃСЃРёРІ, С‡С‚РѕР±С‹ Р±С‹Р» СЃРІРµР¶РёР№
 	// arrayFilled = false;
 	// genArray();
 	glutSetCursor(cursors[3]);
@@ -768,10 +768,10 @@ void writeString(char* string, int x, int y, void* font)
 	}
 }
 
-// Обработчик нажатия мыши
+// РћР±СЂР°Р±РѕС‚С‡РёРє РЅР°Р¶Р°С‚РёСЏ РјС‹С€Рё
 void glutMouse(int button, int state, int x, int y) 
 {
-	// Запоминаем состояние кнопки
+	// Р—Р°РїРѕРјРёРЅР°РµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РєРЅРѕРїРєРё
 	if(state == GLUT_DOWN) 
 	{
 		switch(button) 
@@ -793,10 +793,10 @@ void glutMouse(int button, int state, int x, int y)
 	}
 }
 
-// Обработчик движения мыши
+// РћР±СЂР°Р±РѕС‚С‡РёРє РґРІРёР¶РµРЅРёСЏ РјС‹С€Рё
 void glutMotion(int x, int y) 
 {
-	// Если кнопка нажата, вращаем сцену
+	// Р•СЃР»Рё РєРЅРѕРїРєР° РЅР°Р¶Р°С‚Р°, РІСЂР°С‰Р°РµРј СЃС†РµРЅСѓ
 	if (mState == DOWN) 
 	{
 		xPan -= (oldY - y);
@@ -809,7 +809,7 @@ void glutMotion(int x, int y)
 
 void glutIdle(void)
 {
-	// Если анимация включена, обновляем кадр
+	// Р•СЃР»Рё Р°РЅРёРјР°С†РёСЏ РІРєР»СЋС‡РµРЅР°, РѕР±РЅРѕРІР»СЏРµРј РєР°РґСЂ
 //	if (playback)
 //	{
 //		glutPostRedisplay();
@@ -842,16 +842,16 @@ int main(int argc, char *argv[])
 {
 	srand ( time(NULL) );
 
-	// Инициализация GLUT
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ GLUT
 	glutInit(&argc, argv);
-	// Врубаем двойную буфферизацию (антимерцание), режим rgba и буффер глубины
+	// Р’СЂСѓР±Р°РµРј РґРІРѕР№РЅСѓСЋ Р±СѓС„С„РµСЂРёР·Р°С†РёСЋ (Р°РЅС‚РёРјРµСЂС†Р°РЅРёРµ), СЂРµР¶РёРј rgba Рё Р±СѓС„С„РµСЂ РіР»СѓР±РёРЅС‹
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_ALPHA);
 
-	// Инициализация полноэкранного "игрового" режима - упрощаем жизнь
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅРѕРіРѕ "РёРіСЂРѕРІРѕРіРѕ" СЂРµР¶РёРјР° - СѓРїСЂРѕС‰Р°РµРј Р¶РёР·РЅСЊ
 	//glutGameModeString( modes[2] );
 	glutEnterGameMode();
 
-	// Callback функции: клава, мышь, перерисовка, холостые
+	// Callback С„СѓРЅРєС†РёРё: РєР»Р°РІР°, РјС‹С€СЊ, РїРµСЂРµСЂРёСЃРѕРІРєР°, С…РѕР»РѕСЃС‚С‹Рµ
 	glutDisplayFunc(glutDisplay);
 	glutKeyboardFunc(glutKeyboard);
 	glutSpecialFunc(glutKeyboardSpec);
@@ -861,7 +861,7 @@ int main(int argc, char *argv[])
 	glutVisibilityFunc(glutVisible);
 	glutTimerFunc(40, glutTimer, 0);
 
-	// Настройка параметров отрисовки и освещения
+	// РќР°СЃС‚СЂРѕР№РєР° РїР°СЂР°РјРµС‚СЂРѕРІ РѕС‚СЂРёСЃРѕРІРєРё Рё РѕСЃРІРµС‰РµРЅРёСЏ
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
@@ -871,10 +871,10 @@ int main(int argc, char *argv[])
 	gH = glutGet(GLUT_SCREEN_HEIGHT);
 	genArray();
 
-	// Запускаем основной цикл GLUT
+	// Р—Р°РїСѓСЃРєР°РµРј РѕСЃРЅРѕРІРЅРѕР№ С†РёРєР» GLUT
 	glutMainLoop();
 
-	// Успешно сваливаем (afaik, не должно быть доступно, GLUT старьё и не предусматривает выхода из main loop)
+	// РЈСЃРїРµС€РЅРѕ СЃРІР°Р»РёРІР°РµРј (afaik, РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РґРѕСЃС‚СѓРїРЅРѕ, GLUT СЃС‚Р°СЂСЊС‘ Рё РЅРµ РїСЂРµРґСѓСЃРјР°С‚СЂРёРІР°РµС‚ РІС‹С…РѕРґР° РёР· main loop)
 	return EXIT_SUCCESS;
 }
 
