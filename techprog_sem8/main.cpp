@@ -1,3 +1,4 @@
+// Common headers:
 #include <iostream>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -6,10 +7,16 @@
 #include <time.h>
 #include <string>
 #include <map>
+
+// Windows headers:
 #include <GL/glut.h>
 #include <GL/gl.h>
-//#include <unistd.h> // for sleep() under nix
 #include <windows.h> // for Sleep under win
+
+// OS X headers:
+//#include <GLUT/glut.h>
+//#include "/System/Library/Frameworks/OpenGL.framework/Headers/gl.h"
+//#include <unistd.h> // for sleep() under nix
 
 #define DEFAULT_NUMBLOCKS 30
 enum {
