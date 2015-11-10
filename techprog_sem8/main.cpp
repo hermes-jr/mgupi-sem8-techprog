@@ -97,13 +97,13 @@ Record* recording = NULL;
 
 float frand()
 {
-	return (float)rand()/(RAND_MAX + 1);
+	return (float)rand()/(RAND_MAX);
 }
 
 float distrUniform(float mean)
 {
 	float R;
-	R = (float)rand()/(float)(RAND_MAX+1);
+	R = (float)rand()/(float)(RAND_MAX);
 	return  2*mean*R;
 
 }
@@ -112,7 +112,7 @@ float distrUniform(float mean)
 float distrExponential(float mean)
 {
 	float R;
-	R = (float)rand()/(float)(RAND_MAX+1);
+	R = (float)rand()/(float)(RAND_MAX);
 	return  -mean*log(R);
 }
 
@@ -133,7 +133,7 @@ int distrPoisson(float mean) //Special technique required: Box-Muller method...
 int distrGeometric(float p)
 {
             float R;
-            R= (float)rand()/(float)(RAND_MAX+1);
+            R= (float)rand()/(float)(RAND_MAX);
             return (int)(log(R)/log(1-p) - 1);
 }
 
