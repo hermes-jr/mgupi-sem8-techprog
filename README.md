@@ -1,6 +1,8 @@
 # mgupi-sem8-techprog
 Homework project, 2012/05/31
 
+This program visualizes one of sorting methods step-by-step.
+
 Code is portable. Tested on Windows 10, Windows 7, OS X 10.11.1 (and a few older versions).
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/3757084/11061869/24ed4308-87bb-11e5-896c-da226e9cdb77.png "Default state, unsorted")
@@ -8,8 +10,6 @@ Code is portable. Tested on Windows 10, Windows 7, OS X 10.11.1 (and a few older
 #####Requirements:
 * C++ compiler
 * GLUT
-
-If I remember correctly, this program visualizes one of sorting methods step-by-step.
 
 #####Usage:
 Use `Q` to quit.
